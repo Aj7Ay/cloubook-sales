@@ -477,7 +477,6 @@ body {
     color: var(--accent-gold);
     font-size: 1.5rem;
     font-weight: 900;
-    text-shadow: 0 0 10px var(--accent-gold);
 }
 
 .discount-percent {
@@ -722,7 +721,6 @@ body {
     color: var(--accent-gold);
     font-size: 2.5rem;
     font-weight: 900;
-    text-shadow: 0 0 20px var(--accent-gold);
     margin-bottom: 0.5rem;
 }
 
