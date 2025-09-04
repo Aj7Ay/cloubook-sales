@@ -1,5 +1,57 @@
-// Course Data - Empty for initial launch
-const coursesData = [];
+// Course Data - Practical DevSecOps Courses
+const coursesData = [
+    {
+        id: 'devsecops-professional',
+        title: 'DevSecOps Professional (CDP)',
+        instructor: 'Practical DevSecOps',
+        description: 'Practical with 100+ guided hands-on exercises in state-of-the-art online labs. Learn CI/CD pipelines, DevOps, Secure SDLC, and DevSecOps principles.',
+        category: 'devsecops',
+        icon: '🔒',
+        originalPrice: 899,
+        salePrice: 899,
+        rating: 4.9,
+        students: 15000,
+        duration: '100+ labs',
+        badge: 'BESTSELLER',
+        thumbnail: 'https://via.placeholder.com/400x200/1a1a1a/ffd700?text=DevSecOps+Professional',
+        partner: 'Practical DevSecOps',
+        externalLink: 'https://checkout.practical-devsecops.com/'
+    },
+    {
+        id: 'ai-security-professional',
+        title: 'AI Security Professional (CAISP)',
+        instructor: 'Practical DevSecOps',
+        description: 'Deep understanding of AI security risks, model inversion, evasion attacks, and securing AI infrastructure with 30+ hands-on labs.',
+        category: 'ai',
+        icon: '🤖',
+        originalPrice: 999,
+        salePrice: 999,
+        rating: 4.7,
+        students: 6200,
+        duration: '30+ labs',
+        badge: 'NEW',
+        thumbnail: 'https://via.placeholder.com/400x200/1a1a1a/ffd700?text=AI+Security+Professional',
+        partner: 'Practical DevSecOps',
+        externalLink: 'https://checkout.practical-devsecops.com/'
+    },
+    {
+        id: 'devsecops-expert',
+        title: 'DevSecOps Expert (CDE)',
+        instructor: 'Practical DevSecOps',
+        description: 'Advanced DevSecOps training with comprehensive coverage of security practices, automation, and compliance in modern development workflows.',
+        category: 'devsecops',
+        icon: '🛡️',
+        originalPrice: 1199,
+        salePrice: 1199,
+        rating: 4.8,
+        students: 8500,
+        duration: '120+ labs',
+        badge: 'EXPERT',
+        thumbnail: 'https://via.placeholder.com/400x200/1a1a1a/ffd700?text=DevSecOps+Expert',
+        partner: 'Practical DevSecOps',
+        externalLink: 'https://checkout.practical-devsecops.com/'
+    }
+];
 
 // DOM Elements
 const coursesGrid = document.getElementById('coursesGrid');
@@ -128,10 +180,20 @@ function addToCart(courseId) {
 
 
 
-// Filter courses by category (currently disabled)
+// Filter courses by category
 function filterCourses(category) {
-    // No categories available yet
-    renderCourses();
+    // Update active filter button
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    document.querySelector(`[data-filter="${category}"]`).classList.add('active');
+    
+    if (category === 'all') {
+        renderCourses();
+    } else {
+        const filteredCourses = coursesData.filter(course => course.category === category);
+        renderCourses(filteredCourses);
+    }
     
     // Smooth scroll to courses section
     document.getElementById('courses').scrollIntoView({ behavior: 'smooth' });
